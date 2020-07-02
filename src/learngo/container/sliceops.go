@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func printSlice(s []int) {
-	fmt.Printf("len: %d, cap%d\n", len(s), cap(s))
+	fmt.Printf("len: %d, cap: %d\n", len(s), cap(s))
 }
 
 func main() {
