@@ -1,30 +1,34 @@
-package main
+package tree
 
 import "fmt"
 
-type treeNode struct {
-	value       int
-	left, right *treeNode
+type Node struct {
+	Value       int
+	Left, Right *Node
 }
 
-func createNode(value int) *treeNode {
-	return &treeNode{value: value}
+func CreateNode(value int) *Node {
+	return &Node{Value: value}
 }
 
-func main() {
-	var root treeNode
-	root = treeNode{3, nil, nil}
+func (node Node) Print() {
+	fmt.Print(node.Value, " ")
+}
 
-	// 不论地址还是结构一律使用.访问成员
-	root.left = &treeNode{}
-	root.right = &treeNode{5, nil, nil}
-	root.right.left = new(treeNode)
-	root.left.right = createNode(2)
-
-	nodes := []treeNode{
-		{value: 3, left: nil, right: nil},
-		{value: 5},
-		{8, &root, nil},
+func (node *Node) SetValue(v int) {
+	if node == nil {
+		fmt.Println("ignored")
+		return
 	}
-	fmt.Println(nodes)
+	node.Value = v
+}
+
+func (node *Node) Traverse() {
+	if node == nil {
+		return
+	}
+
+	node.Left.Traverse()
+	node.Print()
+	node.Right.Traverse()
 }
