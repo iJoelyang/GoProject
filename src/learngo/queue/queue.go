@@ -1,13 +1,13 @@
 package queue
 
-type Queue []int
+type Queue [] interface{}
 
-func (q *Queue) Push(v int) {
+func (q *Queue) Push(v interface{}) {
 	*q = append(*q, v)
 }
 
-func (q *Queue) Pop() int {
-	if q == nil || len(*q) == 0{
+func (q *Queue) Pop() interface{} {
+	if q == nil || len(*q) == 0 {
 		return -1
 	}
 	head := (*q)[0]
