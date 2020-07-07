@@ -22,13 +22,3 @@ func (node *Node) SetValue(v int) {
 	}
 	node.Value = v
 }
-
-func (node *Node) Traverse() {
-	if node == nil {
-		return
-	}
-
-	node.Left.Traverse()
-	node.Print()
-	node.Right.Traverse()
-}
